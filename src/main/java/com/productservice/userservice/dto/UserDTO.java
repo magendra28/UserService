@@ -6,15 +6,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
 public class UserDTO {
     private String name;
     private String email;
-    private ArrayList<Role> role;
+    private List<Role> role;
 
     public static UserDTO from(User user) {
+        if(user == null){
+            return null;
+        }
         UserDTO userDTO = new UserDTO();
         userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
