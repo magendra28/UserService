@@ -1,7 +1,10 @@
 package com.productservice.userservice.security.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.productservice.userservice.model.Role;
 import com.productservice.userservice.model.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,18 +12,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@JsonDeserialize
+@Getter
+@Setter
 // this class will act as user class for spring security
 public class CustomerUserDetails implements UserDetails {
-    private String userName;
+    private String username;
     private String password;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
-    private List<CustomerGrantedAuthority> customAuthorities;
+    private List<CustomerGrantedAuthority> authorities;
+
 
     public CustomerUserDetails(User user) {
-        this.userName = user.getEmail();
+        this.username = user.getEmail();
         this.password = user.getHashedPassword();
         this.accountNonExpired = true;
         this.accountNonLocked = true;
@@ -28,14 +35,17 @@ public class CustomerUserDetails implements UserDetails {
         this.enabled = true;
 
         for(Role role : user.getRoles()) {
-            this.customAuthorities = new ArrayList<>();
-            customAuthorities.add(new CustomerGrantedAuthority(role));
+            this.authorities = new ArrayList<>();
+            authorities.add(new CustomerGrantedAuthority(role));
         }
+    }
+    public CustomerUserDetails(){
+
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return customAuthorities;
+        return authorities;
     }
 
     @Override
@@ -45,7 +55,7 @@ public class CustomerUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.productservice.userservice.security.services;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.productservice.userservice.model.User;
 import com.productservice.userservice.repository.UserRepository;
 import com.productservice.userservice.security.models.CustomerUserDetails;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@JsonDeserialize
 public class CustomUserDetsilsService implements UserDetailsService {
     // load the user repo to get the details of user
     private UserRepository userRepository;

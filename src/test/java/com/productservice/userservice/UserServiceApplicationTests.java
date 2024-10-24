@@ -24,8 +24,8 @@ class UserServiceApplicationTests {
 //    @Test
 //    public void addSampleRegisteredClient() {
 //        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-//                .clientId("oidc-client")
-//                .clientSecret("$2a$12$mN9zZ6qeumM4DUY84B29/.28EdqNITcBmzGeMMDMXy3HFRat4JIri")
+//                .clientId("scaler")
+//                .clientSecret("$2a$12$lZjdZZt2OEhg7Gn2u8R7qe3cVnxiEPOYy9O41qkIGM6mDle3L4krG")
 //                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 //                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 //                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
